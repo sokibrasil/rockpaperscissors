@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>絶対に勝てないじゃんけん</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        h1 {
+            display: inline-block;
+            color: #333;
+            padding: 1rem 2rem;
+            border-top: 3px dashed #000;
+            border-bottom: 3px dashed #000;
+        }
+
+        .result {
+            margin-top: 20px;
+        }
+
+        .totalResult {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>絶対に勝てないじゃんけん</h1>
+
+    <p>あなたの選択: <span id="playerChoice"></span></p>
+
+    <div class=choiceImg>
+        <button id='rock_player' onclick="playGame('rock')"><img src="img/janken_gu.png" alt="button" width="80"
+                height="80"></button>
+        <button id='paper_player' onclick="playGame('paper')"><img src="img/janken_pa.png" alt="button" width="80"
+                height="80"></button>
+        <button id='scissors_player' onclick="playGame('scissors')"><img src="img/janken_choki.png" alt="button"
+                width="80" height="80"></button>
+    </div>
+
+    <p>コンピュータの選択: <span id="computerChoice"></span></p>
+
+    <div class=choiceImg>
+        <img id='rock_computer' src="img/janken_gu.png" alt="button" width="80" height="80"></button>
+        <img id='paper_computer' src="img/janken_pa.png" alt="button" width="80" height="80"></button>
+        <img id='scissors_computer' src="img/janken_choki.png" alt="button" width="80" height="80"></button>
+    </div>
+
+    <div class="totalResult">
+        <p>結果: <span id="result"></span></p>
+        <p> 勝った回数: &nbsp;<span id="winCounts"></span>回</p>
+        <p> 負けた回数: &nbsp;<span id="lostCounts"></span>回</p>
+        <p>引き分けた数: <span id="drawCounts"></span>回</p>
+        <p><button id="restart" onclick="restartGame()"">もう1度</button></p>
+    </div>
+
+    　
+
+
+    <script>
+        var computerChoice;
+        var result;
+        var winCounts = 0;
+        var lostCounts = 0;
+        var drawCounts = 0;
+
+        function playGame(playerChoice) {
+            // コンピュータが勝つ手を選択する
+            switch (playerChoice) {
+                case 'rock':
+                    playerChoice = 'グー';
+                    document.querySelector('.choiceImg #paper_player').style.display = 'none';
+                    document.querySelector('.choiceImg #scissors_player').style.display = 'none';
+                    computerChoice = 'パー';
+                    document.querySelector('.choiceImg #rock_computer').style.display = 'none';
+                    document.querySelector('.choiceImg #scissors_computer').style.display = 'none';
+                    result = '負け';
+                    lostCounts++;
+                    break;
+                case 'paper':
+                    playerChoice = 'パー';
+                    document.querySelector('.choiceImg #rock_player').style.display = 'none';
+                    document.querySelector('.choiceImg #scissors_player').style.display = 'none';
+                    computerChoice = 'チョキ';
+                    document.querySelector('.choiceImg #rock_computer').style.display = 'none';
+                    document.querySelector('.choiceImg #paper_computer').style.display = 'none';
+                    result = '負け';
+                    lostCounts++;
+                    break;
+                case 'scissors':
+                    playerChoice = 'チョキ';
+                    document.querySelector('.choiceImg #rock_player').style.display = 'none';
+                    document.querySelector('.choiceImg #paper_player').style.display = 'none';
+                    computerChoice = 'グー';
+                    document.querySelector('.choiceImg #paper_computer').style.display = 'none';
+                    document.querySelector('.choiceImg #scissors_computer').style.display = 'none';
+                    result = '負け';
+                    lostCounts++;
+                    break;
+            }
+
+            // 結果
+            document.getElementById('playerChoice').textContent = playerChoice;
+            document.getElementById('computerChoice').textContent = computerChoice;
+            document.getElementById('result').textContent = result;
+            document.getElementById('result').style.color = 'blue';
+            document.getElementById('winCounts').textContent = winCounts;
+            document.getElementById('lostCounts').textContent = lostCounts;
+            document.getElementById('drawCounts').textContent = drawCounts;
+            document.querySelector('.totalResult').style.display = 'inline-block';
+
+        }
+
+        function restartGame() {
+            // 初期化する
+            document.querySelector('.choiceImg #rock_player').style.display = 'inline-block';
+            document.querySelector('.choiceImg #paper_player').style.display = 'inline-block';
+            document.querySelector('.choiceImg #scissors_player').style.display = 'inline-block';
+            document.querySelector('.choiceImg #rock_computer').style.display = 'inline-block';
+            document.querySelector('.choiceImg #paper_computer').style.display = 'inline-block';
+            document.querySelector('.choiceImg #scissors_computer').style.display = 'inline-block';
+            document.getElementById('playerChoice').textContent = '';
+            document.getElementById('computerChoice').textContent = '';
+            document.getElementById('result').textContent = '';
+        }
+    </script>
+
+</body>
+
+</html>
