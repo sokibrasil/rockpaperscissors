@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+body {
+    background-image: -webkit-linear-gradient(left, #F4F4F4 4%, #DFDEDC 99%);
+    background-image: linear-gradient(to right, #F4F4F4 4%, #DFDEDC 99%);
+    font-family: 'Noto Sans JP', sans-serif;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h1 {
+    display: inline-block;
+    color: #333;
+    padding: 1rem 2rem;
+    border-top: 3px dashed #000;
+    border-bottom: 3px dashed #000;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.totalResult {
+    display: none;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap" rel="stylesheet">
+    <title>絶対に勝てないじゃんけん</title>
+</head>
+
+<body>
+    <h1>絶対に勝てないじゃんけん</h1>
+
+    <p>あなたの選択: <span id="playerChoiceText"></span></p>
+
+    <div class="choiceImg">
+        <button id="rock_player" onclick="playGame('0');this.disabled = true"><img src="../img/janken_gu.png"
+                alt="button" width="80" height="80"></button>
+        <button id="paper_player" onclick="playGame('1');this.disabled = true"><img src="../img/janken_pa.png"
+                alt="button" width="80" height="80"></button>
+        <button id="scissors_player" onclick="playGame('2');this.disabled = true"><img src="../img/janken_choki.png"
+                alt="button" width="80" height="80"></button>
+    </div>
+
+    <p>コンピュータの選択: <span id="computerChoiceText"></span></p>
+
+    <div class="choiceImg">
+        <img id="rock_computer" src="../img/janken_gu.png" alt="button" width="80" height="80">
+        <img id="paper_computer" src="../img/janken_pa.png" alt="button" width="80" height="80">
+        <img id="scissors_computer" src="../img/janken_choki.png" alt="button" width="80" height="80">
+    </div>
+
+    <div class="totalResult">
+        <p>結果: <span id="result"></span></p>
+        <p> 勝った回数: &nbsp;<span id="winCounts"></span>回</p>
+        <p> 負けた回数: &nbsp;<span id="lostCounts"></span>回</p>
+        <p>引き分けた回数: <span id="drawCounts"></span>回</p>
+        <p><button id="restart" onclick="restartGame()">もう1度</button></p>
+    </div>
+<script src="rock paper scissors2.js"></script>
+</body>
+
+</html>
